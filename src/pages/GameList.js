@@ -1,4 +1,5 @@
 import React from 'react';
+import GameModel from '../models/GameModel';
 
 class GameList extends React.Component {
     state = {
@@ -6,9 +7,16 @@ class GameList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3001/api/v1/games')
-            .then(response => response.json())
-            .then(json => console.log(json))
+        this.fetchGames();
+    }
+
+    fetchGames = () => {
+        GameModel.all()
+            .then(json => {
+                this.setState({
+                    games: json.games
+                })
+            })
     }
 
     render() {
