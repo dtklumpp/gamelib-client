@@ -1,9 +1,12 @@
 import React from 'react';
+import GameCard from './GameCard';
+
+import './Games.css';
 
 const Games = (props) => {
     function generateGameCards(games) {
         return games.map(game => {
-            return <p>{game.title}</p>
+            return <GameCard key={game._id} game={game} />
         })
     }
 
