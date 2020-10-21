@@ -9,20 +9,36 @@ class NewGame extends React.Component {
         completed: false,
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        GameModel.create(this.state)
+            .then(json => {
+                console.log(json)
+                this.props.history.push('/games')
+            })
+    }
+
     handleChange = (event) => {
         console.log(event.target.name, event.target.value)
         console.log(this.state[event.target.name])
 
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+        if(event.target.type !== 'text') {
+            this.setState(prevState => ({
+                completed: !prevState.completed
+            }))
+        } else {   
+            this.setState({
+                [event.target.name]: event.target.value
+            })
+        }
     }
 
     render() {
         return (
             <div>
                 <h2>New Game</h2>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div className='form-input'>
                         <label htmlFor='title'>Title</label>
                         <input
