@@ -19,6 +19,17 @@ class GameModel {
         })
         .then(response => response.json());
     }
+
+    static edit = (gameId, gameData) => {
+        return fetch(`${URL}/${gameId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(gameData)
+        })
+        .then(response => response.json());
+    }
 }
 
 export default GameModel

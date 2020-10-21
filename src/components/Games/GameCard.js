@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const GameCard = (props) => {
-    console.log(props);
     const { title, publisher, coverArtUrl, _id } = props.game;
     return (
         <Link to={`/games/${_id}`}>
