@@ -1,6 +1,7 @@
 import React from 'react';
 
 const GameCard = (props) => {
+    console.log(props);
     const { title, publisher, coverArtUrl } = props.game;
     return (
         <div className='game-card'>
