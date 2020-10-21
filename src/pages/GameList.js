@@ -1,4 +1,5 @@
 import React from 'react';
+import Games from '../components/Games/Games';
 import GameModel from '../models/GameModel';
 
 class GameList extends React.Component {
@@ -21,7 +22,7 @@ class GameList extends React.Component {
 
     render() {
         return (
-            <p>GameList</p>
+            <Games data={this.state.games} />
         )
     }
 }
