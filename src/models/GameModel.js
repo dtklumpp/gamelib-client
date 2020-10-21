@@ -8,6 +8,17 @@ class GameModel {
     static show = (gameId) => {
         return fetch(`${URL}/${gameId}`).then(response => response.json());
     }
+
+    static create = (gameData) => {
+        return fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(gameData)
+        })
+        .then(response => response.json());
+    }
 }
 
 export default GameModel

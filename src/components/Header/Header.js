@@ -15,7 +15,7 @@ const Header = (props) => {
                         <NavLink to='/games'>All Games</NavLink>
                     </li>
                     <li>
-                        Add New Game
+                        <NavLink to='/games/new'>Add New Game</NavLink>
                     </li>
                 </ul>
             </div>
