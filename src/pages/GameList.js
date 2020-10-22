@@ -33,6 +33,11 @@ function GameList(props) {
   useEffect(function () {
     console.log("useEffect was called on mount");
     fetchGames();
+
+    // on unmount
+    return function () {
+      console.log("runs on unmount");
+    };
   }, []);
 
   function fetchGames() {
@@ -44,7 +49,7 @@ function GameList(props) {
   return (
     <div>
       <h1>All Games</h1>
-      <Games data={games} />
+      {games.length ? <Games data={games} /> : <h1>Loading...</h1>}
     </div>
   );
 }
