@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Games from "../components/Games/Games";
-import GameModel from "../models/GameModel";
+import useGames from "../hooks/useGames";
 
 function GameList(props) {
-  const [games, setGames] = useState([]);
-
-  useEffect(function () {
-    console.log("useEffect was called on mount");
-    fetchGames();
-
-    // on unmount
-    return function () {
-      console.log("runs on unmount");
-    };
-  }, []);
-
-  function fetchGames() {
-    GameModel.all().then((json) => {
-      setGames(json.games);
-    });
-  }
+  const [games, fetchGames] = useGames();
 
   return (
     <div>
       <h1>All Games</h1>
+      <button onClick={fetchGames}>Refresh</button>
       {games.length ? <Games data={games} /> : <h1>Loading...</h1>}
     </div>
   );

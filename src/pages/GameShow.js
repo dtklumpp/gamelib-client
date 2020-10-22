@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from "react";
-import GameModel from "../models/GameModel";
+import React from "react";
 import GameCard from "../components/Games/GameCard";
 
+import useGames from "../hooks/useGames";
+
 function GameShow(props) {
-  const [game, setGame] = useState(null);
-
-  useEffect(function () {
-    fetchGame();
-  }, []);
-
-  function fetchGame() {
-    GameModel.show(props.match.params.id).then((data) => {
-      setGame(data.game);
-    });
-  }
-
+  const [game] = useGames(props.match.params.id);
   return game ? <GameCard game={game} /> : <h3>Loading...</h3>;
 }
 
