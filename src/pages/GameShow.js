@@ -22,6 +22,9 @@ class GameShow extends React.Component {
 
     render() {
         return (
+            // also works and quicker/shorter
+            // <GameCard game={{...this.state.game}}/>
+
             this.state.game ?
                 <GameCard game={this.state.game} /> :
                 <h3>Loading...</h3>
