@@ -1,25 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-// import to use the recoil state
 import { useRecoilState } from "recoil";
-// import the atom that controls the global state
 import { userState } from "../../recoil/atoms";
 
 import "./Header.css";
 
 const Header = (props) => {
   const [user, setUser] = useRecoilState(userState);
-
-  function login() {
-    const dbUser = {
-      username: "Test user",
-      avatar:
-        "https://gamespot1.cbsistatic.com/uploads/scale_landscape/1587/15875866/3660435-avatar.jpg",
-    };
-
-    setUser(dbUser);
-  }
 
   function logout() {
     setUser(null);
@@ -46,9 +34,14 @@ const Header = (props) => {
               </li>
             </>
           ) : (
-            <li className='btn' onClick={login}>
-              Log in
-            </li>
+            <>
+              <li>
+                <NavLink to={"/login"}>Login</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/register"}>Register</NavLink>
+              </li>
+            </>
           )}
         </ul>
       </div>

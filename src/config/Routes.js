@@ -6,6 +6,8 @@ import GameList from "../pages/GameList";
 import GameShow from "../pages/GameShow";
 import NewGame from "../pages/NewGame";
 import EditGame from "../pages/EditGame";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 import { useRecoilValue } from "recoil";
 import { loggedInState } from "../recoil/selectors";
@@ -15,6 +17,8 @@ const Routes = (props) => {
   return (
     <Switch>
       <Route exact path='/' component={Home} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/login' component={Login} />
       {loggedIn && (
         <Switch>
           <Route path='/games/new' component={NewGame} />
