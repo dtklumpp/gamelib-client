@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 
+import AuthModel from "../models/AuthModel";
+
 function Register(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    AuthModel.register({ username, email, password }).then((response) => {
+      console.log(response);
+      if (response.status === 201) {
+        props.history.push("/login");
+      } else {
+        setError(response.message);
+      }
+    });
   }
 
   return (
     <div>
       <h2>Register for an Account!</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className='form-input'>
           <label htmlFor='username'>Username</label>
