@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AuthModel from "../models/AuthModel";
+import UserModel from "../models/UserModel";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -6,6 +8,13 @@ function Login(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    AuthModel.login({ email, password }).then((response) => {
+      console.log(response);
+      localStorage.setItem("uid", response.signedJwt);
+      UserModel.show().then((response) => {
+        console.log(response);
+      });
+    });
   }
 
   return (
