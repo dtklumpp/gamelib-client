@@ -5,7 +5,7 @@ class UserModel {
     return fetch(URL, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${localStorage.uid})}`,
+        authorization: `Bearer ${localStorage.uid}`,
       },
     })
       .then((response) => response.json())
